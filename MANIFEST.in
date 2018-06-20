@@ -1,0 +1,4 @@
+include uhcarmel/data.sql
+graft uhcarmel/static
+graft uhcarmel/templates
+global-exclude *.pyc

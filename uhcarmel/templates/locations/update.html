@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ location.name }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name" value="{{ request.form['name'] or location.name }}" required>
+    <label for="altitude">Altitude</label>
+    <input name="altitude" id="altitude" value="{{ request.form['altitude'] or location.altitude }}" required>
+    <label for="longitude">Longitude</label>
+    <input name="longitude" id="longitude" value="{{ request.form['longitude'] or location.longitude }}" required>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('locations.delete', id=location.id) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

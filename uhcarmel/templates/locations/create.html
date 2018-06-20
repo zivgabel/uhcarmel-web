@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Location{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name" value="{{ request.form['name'] }}" required>
+    <label for="altitude">Altitude</label>
+    <input name="altitude" id="altitude" value="{{ request.form['altitude'] }}" required>
+    <label for="longitude">Longitude</label>
+    <input name="longitude" id="longitude" value="{{ request.form['longitude'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

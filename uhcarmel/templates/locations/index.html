@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Locations{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('locations.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for location in locations %}
+    <article class="location">
+      <header>
+        <div>
+          <h1>{{ location.title }}</h1>
+          <div class="about">Name {{ location.name }} alt {{ location.altitude }} long {{ location.longitude }}</div>
+        </div>
+          <a class="action" href="{{ url_for('locations.update', id=location.id) }}">Edit</a>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
